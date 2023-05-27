@@ -18,6 +18,4 @@ class MyDemoAction: AnAction() {
             Messages.getInformationIcon());
 
     }
-
-    // Override getActionUpdateThread() when you target 2022.3 or later!
 }
