@@ -1,0 +1,77 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>ru.valisheva.plugin.ComposePlugin</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>ComposePlugin</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="valisheva2002@mail.ru" url="https://www.yourcompany.com">Valisheva</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        Compose plugin for Android Studio. Help to create templates.
+    </description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+
+    <actions>
+        <group
+                id="MyDemoActionGroup"
+                description="Demo action group">
+            <action
+                    id="com.example.demoplugin.MyDemoAction"
+                    class="ru.valisheva.plugin.composeplugin.MyDemoAction"
+                    text="Demo Action"
+                    description="Demo action example"/>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </group>
+        <group id="JetpackComposeUIGroup" text="Group">
+            <add-to-group group-id="NewGroup" anchor="first"/>
+
+            <group id="JetpackComposeUi.NewMenu.Arch"
+                   popup="true"
+                   text="Base Templates"
+                   description="Create base UI components">
+
+                <action id="ru.valisheva.plugin.composeplugin.feature.features.base.BaseUiAction"
+                        class="ru.valisheva.plugin.composeplugin.feature.features.base.BaseUiAction"
+                        text="Base"/>
+
+                <action
+                        id="ComposeArch.List"
+                        text="List"
+                        class="ru.valisheva.plugin.composeplugin.feature.features.list.ComposeListAction"/>
+
+                <action id="ru.valisheva.plugin.composeplugin.feature.features.navigation.NavigationAction"
+                        class="ru.valisheva.plugin.composeplugin.feature.features.navigation.NavigationAction"
+                        text="Navigation"/>
+
+                <action id="ru.valisheva.plugin.composeplugin.feature.features.dialog.DialogAction"
+                        class="ru.valisheva.plugin.composeplugin.feature.features.dialog.DialogAction"
+                        text="DialogAlert"/>
+
+                <action id="ru.valisheva.plugin.composeplugin.feature.features.calendar.CalendarAction"
+                        class="ru.valisheva.plugin.composeplugin.feature.features.calendar.CalendarAction"
+                        text="Calendar"/>
+
+                <action id="ru.valisheva.plugin.composeplugin.feature.features.buttons.ButtonsAction"
+                        class="ru.valisheva.plugin.composeplugin.feature.features.buttons.ButtonsAction"
+                        text="Buttons"/>
+
+            </group>
+        </group>
+    </actions>
+</idea-plugin>

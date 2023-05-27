@@ -1,0 +1,51 @@
+package ${PACKAGE_NAME}
+
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ProvidableCompositionLocal
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
+
+data class ${APP_NAME}MaterialColors(
+    val isDarkTheme: Boolean,
+    val white: Color,
+    val black: Color,
+    val blue: Color,
+    val gray: Color,
+    val red: Color,
+    val transparentBlack: Color,
+    val transparentWhite: Color,
+)
+
+fun ${APP_NAME}MaterialTheme.lightColors() = ${APP_NAME}MaterialColors(
+    isDarkTheme = false,
+    white = Color(0xFFFFFFFF),
+    black = Color(0xFF000000),
+    blue = Color(0xFF00AAFF),
+    gray = Color(0xFF858585),
+    red = Color(0xFFFF6163),
+    transparentWhite = Color(0x00FFFFFF),
+    transparentBlack = Color(0x00000000),
+)
+
+fun ${APP_NAME}MaterialTheme.darkColors() = ${APP_NAME}MaterialColors(
+    isDarkTheme = true,
+    white = Color(0xFF121212),
+    black = Color(0xFFE3E3E3),
+    blue = Color(0xFF008FDB),
+    gray = Color(0xFF7A7A7A),
+    red = Color(0xFFF54E57),
+    transparentWhite = Color(0x00121212),
+    transparentBlack = Color(0x00E3E3E3),
+)
+
+@Composable
+fun ${APP_NAME}MaterialTheme.dynamicColors(isDarkTheme: Boolean = isSystemInDarkTheme()): ${APP_NAME}MaterialColors =
+    if (!isDarkTheme) {
+        lightColors()
+    } else {
+        darkColors()
+    }
+
+internal val Local${APP_NAME}MaterialColors: ProvidableCompositionLocal<${APP_NAME}MaterialColors> =
+    staticCompositionLocalOf { ${APP_NAME}MaterialTheme.lightColors() }

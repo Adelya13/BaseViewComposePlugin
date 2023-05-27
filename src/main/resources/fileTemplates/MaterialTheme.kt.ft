@@ -1,0 +1,63 @@
+package ${PACKAGE_NAME}
+
+import androidx.compose.material.ripple.LocalRippleTheme
+import androidx.compose.material.ripple.RippleTheme
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.remember
+
+
+object ${APP_NAME}MaterialTheme {
+    val colors: ${APP_NAME}MaterialColors
+
+        @Composable
+        @ReadOnlyComposable
+        get() = Local${APP_NAME}MaterialColors.current
+    val typography: ${APP_NAME}MaterialTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = Local${APP_NAME}MaterialTypography.current
+}
+
+@Composable
+fun ${APP_NAME}MaterialTheme(
+    colors: ${APP_NAME}MaterialColors = ${APP_NAME}MaterialTheme.dynamicColors(),
+    typography: ${APP_NAME}MaterialTypography = ${APP_NAME}MaterialTheme.typography,
+    rippleTheme: RippleTheme = ${APP_NAME}MaterialRippleTheme,
+    content: @Composable ${APP_NAME}MaterialTheme.() -> Unit
+) {
+    CompositionLocalProvider(
+        Local${APP_NAME}MaterialColors provides remember { colors },
+        Local${APP_NAME}MaterialTypography provides remember { typography },
+    ) {
+        MaterialTheme(
+            MaterialTheme.colorScheme.copy(
+                background = colors.white,
+                surface = colors.white
+            )
+        ) {
+            CompositionLocalProvider(
+                LocalRippleTheme provides remember { rippleTheme },
+                LocalContentColor provides remember { colors.black },
+            ) {
+                AhahaMaterialTheme.content()
+            }
+        }
+    }
+}
+
+@Immutable
+private object ${APP_NAME}MaterialRippleTheme : RippleTheme {
+    @Composable
+    override fun defaultColor() = ${APP_NAME}MaterialTheme.colors.blue
+
+    @Composable
+    override fun rippleAlpha() = RippleTheme.defaultRippleAlpha(
+        contentColor = ${APP_NAME}MaterialTheme.colors.blue,
+        lightTheme = !${APP_NAME}MaterialTheme.colors.isDarkTheme
+    )
+}

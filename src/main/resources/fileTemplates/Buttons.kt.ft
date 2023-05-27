@@ -1,0 +1,120 @@
+package ${PACKAGE_NAME}
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun SimpleButtonComponent() {
+
+    Button(
+        modifier = Modifier.padding(16.dp),
+        elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
+        onClick = {}) {
+        Text(text = "Simple button", modifier = Modifier.padding(16.dp))
+    }
+}
+#if(${Simple_Button_With_Border_Component} == true)
+@Composable
+fun SimpleButtonWithBorderComponent() {
+    Button(
+        onClick = {},
+        modifier = Modifier.padding(16.dp),
+        elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
+        border = BorderStroke(width = 5.dp, brush = SolidColor(Color.Black))
+    ) {
+        Text(text = "Simple button with border", modifier = Modifier.padding(16.dp))
+    }
+}
+#end
+#if(${Rounded_Corner_Button_Component} == true)
+@Composable
+fun RoundedCornerButtonComponent() {
+    Button(
+        onClick = {},
+        modifier = Modifier.padding(16.dp),
+        shape = RoundedCornerShape(16.dp),
+        elevation = ButtonDefaults.elevatedButtonElevation(5.dp),
+    ) {
+        Text(text = "Button with rounded corners", modifier = Modifier.padding(16.dp))
+    }
+}
+#end
+#if(${Outlined_Button_Component} == true)
+@Composable
+fun OutlinedButtonComponent() {
+    OutlinedButton(
+        onClick = {},
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Text(text = "Outlined Button", modifier = Modifier.padding(16.dp))
+    }
+}
+#end
+#if(${Text_Button_Component} == true)
+@Composable
+fun TextButtonComponent() {
+    TextButton(
+        onClick = {},
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Text(text = "Text Button", modifier = Modifier.padding(16.dp))
+    }
+}
+#end
+
+@Preview("Example showing a simple button")
+@Composable
+fun SimpleButtonComponentPreview() {
+    Column {
+        SimpleButtonComponent()
+    }
+}
+#if(${Simple_Button_With_Border_Component} == true)
+@Preview("Example showing a button with border")
+@Composable
+fun SimpleButtonWithBorderComponentPreview() {
+    Column {
+        SimpleButtonWithBorderComponent()
+    }
+}
+#end
+#if(${Rounded_Corner_Button_Component} == true)
+@Preview("Example showing a button with corners")
+@Composable
+fun RoundedCornerButtonComponentPreview() {
+    Column {
+        RoundedCornerButtonComponent()
+    }
+}
+#end
+#if(${Outlined_Button_Component} == true)
+@Preview("Example showing a outline button")
+@Composable
+fun OutlinedButtonComponentPreview() {
+    Column {
+        OutlinedButtonComponent()
+    }
+}
+#end
+#if(${Text_Button_Component} == true)
+@Preview("Example showing a text button")
+@Composable
+fun TextButtonComponentPreview() {
+    Column {
+        TextButtonComponent()
+    }
+}
+#end

@@ -1,0 +1,43 @@
+package ${PACKAGE_NAME}
+
+import androidx.compose.runtime.ProvidableCompositionLocal
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+
+data class ${APP_NAME}MaterialTypography(
+    val body: TextStyle = TextStyle(
+           fontFamily = FontFamily.Default,
+           fontSize = 16.sp,
+           lineHeight = 22.sp,
+           fontWeight = FontWeight.Normal,
+       ),
+    val bodySmall: TextStyle = TextStyle(
+       fontFamily = FontFamily.Default,
+       fontSize = 14.sp,
+       lineHeight = 18.sp,
+       fontWeight = FontWeight.Normal,
+    ),
+    val headingSmall: TextStyle = TextStyle(
+       fontFamily = FontFamily.Default,
+       fontSize = 16.sp,
+       lineHeight = 22.sp,
+       fontWeight = FontWeight.Bold,
+    ),
+    val h4: TextStyle = TextStyle(
+       fontFamily = FontFamily.Default,
+       fontSize = 18.sp,
+       lineHeight = 20.sp,
+       fontWeight = FontWeight.Bold,
+    ),
+    val titleSmall: TextStyle = TextStyle(
+       fontFamily = FontFamily.Default,
+       fontSize = 25.sp,
+       lineHeight = 30.sp,
+       fontWeight = FontWeight.Bold,
+    ),
+)
+
+internal val Local${APP_NAME}MaterialTypography: ProvidableCompositionLocal<${APP_NAME}MaterialTypography> =
+    staticCompositionLocalOf { ${APP_NAME}MaterialTypography() }
